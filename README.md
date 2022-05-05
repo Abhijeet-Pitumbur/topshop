@@ -30,14 +30,14 @@ Topshop offers its customers a modern shopping experience by bringing computers,
 - Download and install a web server stack, like [XAMPP](https://www.apachefriends.org/) or [WAMP](https://www.wampserver.com/).
 - Clone this repository or [download](https://github.com/Abhijeet-Pitumbur/topshop/archive/refs/heads/main.zip) it as a ZIP file.
 - Move the repository folder to *XAMPP/htdocs* or *WAMP/www*.
-- Go to your *[functions/send-email.php]()* file.
+- Go to your *[functions/send-email.php](functions/send-email.php)* file.
 - Modify lines 23, 24 and 25 with valid credentials of a Gmail account. 
 - Open XAMPP or WAMP Control Panel.
 - Start Apache and MySQL.
-- Open a web browser and go to PHPMyAdmin at *[http://localhost/phpmyadmin]()*.
+- Open a web browser and go to PHPMyAdmin at [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 - Create a new database named *topshop*.
-- Import your *[topshop.sql]()* file to the new database.
-- Open a web browser and browse Topshop at *[http://localhost/topshop]()*.
+- Import your *[topshop.sql](topshop.sql)* file to the new database.
+- Open a web browser and browse Topshop at [http://localhost/topshop](http://localhost/topshop).
 
 ### Languages and Frameworks
 - HTML

@@ -2,7 +2,7 @@
 
 Topshop offers its customers a modern shopping experience by bringing computers, appliances, clothing and many other items at their fingertips. With just a few clicks, users can create an account, add products to their cart and place their order.
 
-![](https://github.com/Abhijeet-Pitumbur/topshop/project/demo.gif)
+![](https://github.com/Abhijeet-Pitumbur/topshop/blob/main/project/demo.gif)
 
 ### [View Live Demo](https://abhtopshop.000webhostapp.com)
 

@@ -473,7 +473,7 @@ while ($results = mysqli_fetch_assoc($runQuery)) {
 			?>
 			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="paypalForm">
 				<input type="hidden" name="cmd" value="_cart">
-				<input type="hidden" name="business" value="abhtopshop@gmail.com">
+				<input type="hidden" name="business" value="abhjtweb@gmail.com">
 				<input type="hidden" name="return" value="http://localhost/topshop/functions/paypal-transaction"/>
 				<input type="hidden" name="cancel_return" value="http://localhost/topshop/checkout"/>
 				<input type="hidden" name="custom" value="<?php echo $customerID; ?>">

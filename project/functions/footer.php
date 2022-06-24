@@ -36,7 +36,7 @@ if (!$includeCheck) {
 					<ul>
 						<li><i class="ti-home"></i><a href="https://www.google.com/maps/search/?api=1&query=Surinam+Mauritius" target="_blank" rel="noreferrer">Surinam, Mauritius</a></li>
 						<li><i class="ti-headphone-alt"></i><a href="tel://+23058038524">+230 5803 8524</a></li>
-						<li><i class="ti-email"></i><a href="mailto:abhijeet@null.net">abhijeet@null.net</a></li>
+						<li><i class="ti-email"></i><a href="mailto:abhjtweb@gmail.com">abhjtweb@gmail.com</a></li>
 					</ul>
 				</div>
 			</div>

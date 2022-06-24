@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 'off');
+include "database.php";
 if (empty($emailType)) {
 	header("location:../error");
 	exit();
@@ -20,9 +20,9 @@ try {
 	$mail->Port = 587;
 	$mail->SMTPSecure = "tls";
 	$mail->SMTPAuth = true;
-	$mail->Username = "abhtopshop@gmail.com";
-	$mail->Password = "********";
-	$mail->setFrom("abhtopshop@gmail.com", "Topshop");
+	$mail->Username = EMAIL_ADDRESS;
+	$mail->Password = EMAIL_PASSWORD;
+	$mail->setFrom(EMAIL_ADDRESS, "Topshop");
 	$mail->addAddress($email, $firstName);
 	$mail->SMTPOptions = [
 		"ssl" => [

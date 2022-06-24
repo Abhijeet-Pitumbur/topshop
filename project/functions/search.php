@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 'off');
+include "database.php";
 if (empty($_POST)) {
 	header("location:../error");
 	exit();

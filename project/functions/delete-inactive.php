@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', 'off');
-$code = hash("sha256", "********");
+include "database.php";
+$code = hash("sha256", EMAIL_PASSWORD);
 if (!(isset($_GET["code"]))) {
 	exit("Code required");
 } else if (strcmp($_GET["code"], $code) !== 0) {
@@ -11,7 +11,6 @@ use PHPMailer\PHPMailer\Exception;
 require "../email/Exception.php";
 require "../email/PHPMailer.php";
 require "../email/SMTP.php";
-include "database.php";
 try {
 	$sqlQuery = "SELECT `customerID`, `firstName`, `lastName`, `email`
 	FROM `customers`
@@ -36,9 +35,9 @@ try {
 		$mail->Port = 587;
 		$mail->SMTPSecure = "tls";
 		$mail->SMTPAuth = true;
-		$mail->Username = "abhtopshop@gmail.com";
-		$mail->Password = "********";
-		$mail->setFrom("abhtopshop@gmail.com", "Topshop");
+		$mail->Username = EMAIL_ADDRESS;
+		$mail->Password = EMAIL_PASSWORD;
+		$mail->setFrom(EMAIL_ADDRESS, "Topshop");
 		$mail->addAddress("pitumburabhijeet@gmail.com", "Abhijeet");
 		$mail->SMTPOptions = [
 			"ssl" => [

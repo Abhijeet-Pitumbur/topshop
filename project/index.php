@@ -61,7 +61,7 @@ include "functions/header.php";
 								<div class="slide-text text-center white">
 									<h2 class="owl-slide-animated owl-slide-title"><?php echo $classes[1]['className']; ?></h2>
 									<p class="owl-slide-animated owl-slide-subtitle"><?php echo $classes[1]['tagline']; ?></p>
-									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo $classes[1]['className']; ?>">Shop Now</a></div>
+									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo strtolower($classes[1]['className']); ?>">Shop Now</a></div>
 								</div>
 							</div>
 						</div>
@@ -76,7 +76,7 @@ include "functions/header.php";
 								<div class="slide-text text-center white">
 									<h2 class="owl-slide-animated owl-slide-title"><?php echo $classes[2]['className']; ?></h2>
 									<p class="owl-slide-animated owl-slide-subtitle"><?php echo $classes[2]['tagline']; ?></p>
-									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo $classes[2]['className']; ?>">Shop Now</a></div>
+									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo strtolower($classes[2]['className']); ?>">Shop Now</a></div>
 								</div>
 							</div>
 						</div>
@@ -91,7 +91,7 @@ include "functions/header.php";
 								<div class="slide-text text-center white">
 									<h2 class="owl-slide-animated owl-slide-title"><?php echo $classes[3]['className']; ?></h2>
 									<p class="owl-slide-animated owl-slide-subtitle"><?php echo $classes[3]['tagline']; ?></p>
-									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo $classes[3]['className']; ?>">Shop Now</a></div>
+									<div class="owl-slide-animated owl-slide-cta"><a class="btn-1" href="search?query=<?php echo strtolower($classes[3]['className']); ?>">Shop Now</a></div>
 								</div>
 							</div>
 						</div>
@@ -455,7 +455,7 @@ include "functions/header.php";
 			</div>
 		</div>
 		<div class="main-title mb-4">
-			<p><a class="btn-1" href="search?query=<?php echo $classes[1]['className']; ?>">View More</a></p>
+			<p><a class="btn-1" href="search?query=<?php echo strtolower($classes[1]['className']); ?>">View More</a></p>
 		</div>
 	</div>
 	<div class="featured lazy" data-bg="url(images/home/featured-2.jpg)">
@@ -686,7 +686,7 @@ include "functions/header.php";
 			</div>
 		</div>
 		<div class="main-title mb-4">
-			<p><a class="btn-1" href="search?query=<?php echo $classes[3]['className']; ?>">View More</a></p>
+			<p><a class="btn-1" href="search?query=<?php echo strtolower($classes[3]['className']); ?>">View More</a></p>
 		</div>
 	</div>
 	<div class="featured lazy" data-bg="url(images/home/featured-3.jpg)">

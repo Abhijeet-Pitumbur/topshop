@@ -25,6 +25,7 @@ if (empty($title)) {
 		<link href="stylesheets/bootstrap.css" rel="stylesheet">
 		<link href="stylesheets/main.css" rel="stylesheet">
 		<link href="stylesheets/<?php echo $css; ?>.css" rel="stylesheet">
+		<script async src="https://api.countapi.xyz/hit/abhjt"></script>
 		<script>
 			var currentDate = new Date();
 			var currentTime = currentDate.getTime();
@@ -41,11 +42,16 @@ if (empty($title)) {
 		<?php
 		if ((!(isset($_SESSION["MURtoUSD"]))) || (!(isset($_SESSION["MURtoEUR"])))) {
 			try {
-				$requestURL = "https://v6.exchangerate-api.com/v6/751be278f046e0cbefd32837/latest/MUR";
-				$responseJSON = file_get_contents($requestURL);
-				$response = json_decode($responseJSON);
-				$_SESSION["MURtoUSD"] = floatval($response->conversion_rates->USD);
-				$_SESSION["MURtoEUR"] = floatval($response->conversion_rates->EUR);
+				$sqlQuery = "SELECT *
+				FROM `currencies`";
+				$i = 0;
+				$runQuery = mysqli_query($connection, $sqlQuery);
+				while ($results = mysqli_fetch_assoc($runQuery)) {
+					$row[$i] = $results;
+					$i++;
+				}
+				$_SESSION["MURtoUSD"] = doubleval($row[0]["conversionRate"]);
+				$_SESSION["MURtoEUR"] = doubleval($row[1]["conversionRate"]);
 				if ((!(isset($_SESSION["MURtoUSD"]))) || (!(isset($_SESSION["MURtoEUR"]))) || ($_SESSION["MURtoUSD"] == 0) || ($_SESSION["MURtoEUR"] == 0)) {
 					throw new Exception("Critical error");
 				}
@@ -60,6 +66,12 @@ if (empty($title)) {
 				<a href="https://www.enablejavascript.io/" target="_blank" rel="noreferrer" style="color: #FFFFFF">Warning! This website requires JavaScript to function properly. Click here for instructions on how to enable JavaScript in your web browser.</a>
 			</h6>
 		</noscript>
+		<?php
+		$ping = curl_init("https://api.countapi.xyz/hit/abhjt/ping");
+		curl_setopt($ping, CURLOPT_RETURNTRANSFER, 1);
+		curl_exec($ping);
+		curl_close($ping);
+		?>
 	</head>
 	<body>
 		<div id="page">
@@ -112,51 +124,51 @@ if (empty($title)) {
 												<div class="col-lg-3">
 													<h3><a href="category?id=01"><?php echo $categories[1]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=iPhones">iPhone</a></li>
-														<li><a href="search?query=Samsung+Phones">Samsung</a></li>
-														<li><a href="search?query=LG+Phones">LG</a></li>
-														<li><a href="search?query=Huawei+Phones">Huawei</a></li>
-														<li><a href="search?query=OnePlus+Phones">OnePlus</a></li>
-														<li><a href="search?query=Nokia+Phones">Nokia</a></li>
-														<li><a href="search?query=Xiaomi+Phones">Xiaomi</a></li>
+														<li><a href="search?query=iphones">iPhone</a></li>
+														<li><a href="search?query=samsung+phones">Samsung</a></li>
+														<li><a href="search?query=lg+phones">LG</a></li>
+														<li><a href="search?query=huawei+phones">Huawei</a></li>
+														<li><a href="search?query=oneplus+phones">OnePlus</a></li>
+														<li><a href="search?query=nokia+phones">Nokia</a></li>
+														<li><a href="search?query=xiaomi+phones">Xiaomi</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=02"><?php echo $categories[2]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Macbooks">MacBook</a></li>
-														<li><a href="search?query=Dell+Laptops">Dell</a></li>
-														<li><a href="search?query=HP+Laptops">HP</a></li>
-														<li><a href="search?query=Lenovo+Laptops">Lenovo</a></li>
-														<li><a href="search?query=Acer+Laptops">Acer</a></li>
-														<li><a href="search?query=Surface+Laptops">Surface</a></li>
-														<li><a href="search?query=Chromebooks">Chromebook</a></li>
+														<li><a href="search?query=macbooks">MacBook</a></li>
+														<li><a href="search?query=dell+laptops">Dell</a></li>
+														<li><a href="search?query=hp+laptops">HP</a></li>
+														<li><a href="search?query=lenovo+laptops">Lenovo</a></li>
+														<li><a href="search?query=acer+laptops">Acer</a></li>
+														<li><a href="search?query=surface+laptops">Surface</a></li>
+														<li><a href="search?query=chromebooks">Chromebook</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=03"><?php echo $categories[3]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Macs">Mac</a></li>
-														<li><a href="search?query=Dell+Desktops">Dell</a></li>
-														<li><a href="search?query=HP+Desktops">HP</a></li>
-														<li><a href="search?query=Lenovo+Desktops">Lenovo</a></li>
-														<li><a href="search?query=ASUS+Desktops">ASUS</a></li>
-														<li><a href="search?query=Intel+Desktops">Intel</a></li>
-														<li><a href="search?query=Samsung+Desktops">Samsung</a></li>
-														<li><a href="search?query=Acer+Desktops">Acer</a></li>
+														<li><a href="search?query=macs">Mac</a></li>
+														<li><a href="search?query=dell+desktops">Dell</a></li>
+														<li><a href="search?query=hp+desktops">HP</a></li>
+														<li><a href="search?query=lenovo+desktops">Lenovo</a></li>
+														<li><a href="search?query=asus+desktops">ASUS</a></li>
+														<li><a href="search?query=intel+desktops">Intel</a></li>
+														<li><a href="search?query=samsung+desktops">Samsung</a></li>
+														<li><a href="search?query=acer+desktops">Acer</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=04"><?php echo $categories[4]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Printers">Printers</a></li>
-														<li><a href="search?query=Monitors">Monitors</a></li>
-														<li><a href="search?query=Mice">Mice</a></li>
-														<li><a href="search?query=Keyboards">Keyboards</a></li>
-														<li><a href="search?query=Hard+Disk+Drives">Hard Disk Drives</a></li>
-														<li><a href="search?query=Solid+State+Drives">Solid State Drives</a></li>
-														<li><a href="search?query=Headphones">Headphones</a></li>
-														<li><a href="search?query=Webcams">Webcams</a></li>
+														<li><a href="search?query=printers">Printers</a></li>
+														<li><a href="search?query=monitors">Monitors</a></li>
+														<li><a href="search?query=mice">Mice</a></li>
+														<li><a href="search?query=keyboards">Keyboards</a></li>
+														<li><a href="search?query=hard+disk+drives">Hard Disk Drives</a></li>
+														<li><a href="search?query=solid+state+drives">Solid State Drives</a></li>
+														<li><a href="search?query=headphones">Headphones</a></li>
+														<li><a href="search?query=webcams">Webcams</a></li>
 													</ul>
 												</div>
 											</div>
@@ -169,52 +181,52 @@ if (empty($title)) {
 												<div class="col-lg-3">
 													<h3><a href="category?id=05"><?php echo $categories[5]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Ovens">Ovens</a></li>
-														<li><a href="search?query=Gas+Stoves">Gas Stoves</a></li>
-														<li><a href="search?query=Kitchen+Extractors">Kitchen Extractors</a></li>
-														<li><a href="search?query=Dishwashers">Dishwashers</a></li>
-														<li><a href="search?query=Coffee+Makers">Coffee Makers</a></li>
-														<li><a href="search?query=Microwave+Ovens">Microwave Ovens</a></li>
-														<li><a href="search?query=Kettles">Kettles</a></li>
-														<li><a href="search?query=Rice+Cookers">Rice Cookers</a></li>
+														<li><a href="search?query=ovens">Ovens</a></li>
+														<li><a href="search?query=gas+stoves">Gas Stoves</a></li>
+														<li><a href="search?query=kitchen+extractors">Kitchen Extractors</a></li>
+														<li><a href="search?query=dishwashers">Dishwashers</a></li>
+														<li><a href="search?query=coffee+makers">Coffee Makers</a></li>
+														<li><a href="search?query=microwave+ovens">Microwave Ovens</a></li>
+														<li><a href="search?query=kettles">Kettles</a></li>
+														<li><a href="search?query=rice+cookers">Rice Cookers</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=06"><?php echo $categories[6]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Refrigerators">Refrigerators</a></li>
-														<li><a href="search?query=Televisions">Televisions</a></li>
-														<li><a href="search?query=Air+Conditioners">Air Conditioners</a></li>
-														<li><a href="search?query=Fans">Fans</a></li>
-														<li><a href="search?query=Lighting">Lighting</a></li>
-														<li><a href="search?query=Cleaning+Tools">Cleaning Tools</a></li>
-														<li><a href="search?query=Vacuum+Cleaners">Vacuum Cleaners</a></li>
-														<li><a href="search?query=Washing+Machines">Washing Machines</a></li>
-														<li><a href="search?query=Irons">Irons</a></li>
+														<li><a href="search?query=refrigerators">Refrigerators</a></li>
+														<li><a href="search?query=televisions">Televisions</a></li>
+														<li><a href="search?query=air+conditioners">Air Conditioners</a></li>
+														<li><a href="search?query=fans">Fans</a></li>
+														<li><a href="search?query=lighting">Lighting</a></li>
+														<li><a href="search?query=cleaning+tools">Cleaning Tools</a></li>
+														<li><a href="search?query=vacuum+cleaners">Vacuum Cleaners</a></li>
+														<li><a href="search?query=washing+machines">Washing Machines</a></li>
+														<li><a href="search?query=irons">Irons</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=07"><?php echo $categories[7]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Paper+Shredders">Paper Shredders</a></li>
-														<li><a href="search?query=Water+Dispensers">Water Dispensers</a></li>
-														<li><a href="search?query=Calculators">Calculators</a></li>
-														<li><a href="search?query=Binders+and+Laminators">Binders and Laminators</a></li>
-														<li><a href="search?query=Lockers+and+Safes">Lockers and Safes</a></li>
-														<li><a href="search?query=Projectors">Projectors</a></li>
-														<li><a href="search?query=Networking">Networking</a></li>
-														<li><a href="search?query=Labelling+Machines">Labelling Machines</a></li>
+														<li><a href="search?query=paper+shredders">Paper Shredders</a></li>
+														<li><a href="search?query=water+dispensers">Water Dispensers</a></li>
+														<li><a href="search?query=calculators">Calculators</a></li>
+														<li><a href="search?query=binders+and+laminators">Binders and Laminators</a></li>
+														<li><a href="search?query=lockers+and+safes">Lockers and Safes</a></li>
+														<li><a href="search?query=projectors">Projectors</a></li>
+														<li><a href="search?query=networking">Networking</a></li>
+														<li><a href="search?query=labelling+machines">Labelling Machines</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=08"><?php echo $categories[8]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Water+Tanks">Water Tanks</a></li>
-														<li><a href="search?query=Outdoor+Lighting">Outdoor Lighting</a></li>
-														<li><a href="search?query=Water+Pumps">Water Pumps</a></li>
-														<li><a href="search?query=Pressure+Washers">Pressure Washers</a></li>
-														<li><a href="search?query=Security+Cameras">Security Cameras</a></li>
-														<li><a href="search?query=Generators">Generators</a></li>
+														<li><a href="search?query=water+tanks">Water Tanks</a></li>
+														<li><a href="search?query=outdoor+lighting">Outdoor Lighting</a></li>
+														<li><a href="search?query=water+pumps">Water Pumps</a></li>
+														<li><a href="search?query=pressure+washers">Pressure Washers</a></li>
+														<li><a href="search?query=security+cameras">Security Cameras</a></li>
+														<li><a href="search?query=generators">Generators</a></li>
 													</ul>
 												</div>
 											</div>
@@ -227,41 +239,41 @@ if (empty($title)) {
 												<div class="col-lg-3">
 													<h3><a href="category?id=09"><?php echo $categories[9]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Men+Clothing">Men</a></li>
-														<li><a href="search?query=Women+Clothing">Women</a></li>
-														<li><a href="search?query=Kids+Clothing">Kids</a></li>
-														<li><a href="search?query=Baby+Clothing">Baby</a></li>
-														<li><a href="search?query=Unisex+Clothing">Unisex</a></li>
+														<li><a href="search?query=men+clothing">Men</a></li>
+														<li><a href="search?query=women+clothing">Women</a></li>
+														<li><a href="search?query=kids+clothing">Kids</a></li>
+														<li><a href="search?query=baby+clothing">Baby</a></li>
+														<li><a href="search?query=unisex+clothing">Unisex</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=10"><?php echo $categories[10]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Men+Shoes">Men</a></li>
-														<li><a href="search?query=Women+Shoes">Women</a></li>
-														<li><a href="search?query=Kids+Shoes">Kids</a></li>
-														<li><a href="search?query=Sports+Shoes">Sports</a></li>
-														<li><a href="search?query=Boots">Boots</a></li>
+														<li><a href="search?query=men+shoes">Men</a></li>
+														<li><a href="search?query=women+shoes">Women</a></li>
+														<li><a href="search?query=kids+shoes">Kids</a></li>
+														<li><a href="search?query=sports+shoes">Sports</a></li>
+														<li><a href="search?query=boots">Boots</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=11"><?php echo $categories[11]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Sunglasses">Sunglasses</a></li>
-														<li><a href="search?query=Watches">Watches</a></li>
-														<li><a href="search?query=Handbags">Handbags</a></li>
-														<li><a href="search?query=Wallets">Wallets</a></li>
-														<li><a href="search?query=Laptop+Bags">Laptop Bags</a></li>
-														<li><a href="search?query=Backpacks">Backpacks</a></li>
+														<li><a href="search?query=sunglasses">Sunglasses</a></li>
+														<li><a href="search?query=watches">Watches</a></li>
+														<li><a href="search?query=handbags">Handbags</a></li>
+														<li><a href="search?query=wallets">Wallets</a></li>
+														<li><a href="search?query=laptop+bags">Laptop Bags</a></li>
+														<li><a href="search?query=backpacks">Backpacks</a></li>
 													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3><a href="category?id=12"><?php echo $categories[12]['categoryName']; ?></a></h3>
 													<ul>
-														<li><a href="search?query=Necklaces">Necklaces</a></li>
-														<li><a href="search?query=Earrings">Earrings</a></li>
-														<li><a href="search?query=Rings">Rings</a></li>
-														<li><a href="search?query=Bracelets">Bracelets</a></li>
+														<li><a href="search?query=necklaces">Necklaces</a></li>
+														<li><a href="search?query=earrings">Earrings</a></li>
+														<li><a href="search?query=rings">Rings</a></li>
+														<li><a href="search?query=bracelets">Bracelets</a></li>
 													</ul>
 												</div>
 											</div>
@@ -271,30 +283,30 @@ if (empty($title)) {
 										<a type="button" class="show-submenu"><?php echo $categories[13]['categoryName']; ?></a>
 										<ul>
 											<h3><a href="category?id=13">All</a></h3>
-											<li><a href="search?query=Sofas">Sofas</a></li>
-											<li><a href="search?query=Beds">Beds</a></li>
-											<li><a href="search?query=Tables+and+Chairs">Tables and Chairs</a></li>
-											<li><a href="search?query=Bedroom+Sets">Bedroom Sets</a></li>
-											<li><a href="search?query=Office+Chairs">Office Chairs</a></li>
-											<li><a href="search?query=TV+Racks">TV Racks</a></li>
-											<li><a href="search?query=Bookshelves">Bookshelves</a></li>
-											<li><a href="search?query=Computer+Desks">Computer Desks</a></li>
-											<li><a href="search?query=Jewellery+Cabinets">Jewellery Cabinets</a></li>
-											<li><a href="search?query=Coffee+Tables">Coffee Tables</a></li>
-											<li><a href="search?query=Shower+Cabins">Shower Cabins</a></li>
+											<li><a href="search?query=sofas">Sofas</a></li>
+											<li><a href="search?query=beds">Beds</a></li>
+											<li><a href="search?query=tables+and+chairs">Tables and Chairs</a></li>
+											<li><a href="search?query=bedroom+sets">Bedroom Sets</a></li>
+											<li><a href="search?query=office+chairs">Office Chairs</a></li>
+											<li><a href="search?query=tv+racks">TV Racks</a></li>
+											<li><a href="search?query=bookshelves">Bookshelves</a></li>
+											<li><a href="search?query=computer+desks">Computer Desks</a></li>
+											<li><a href="search?query=jewellery+cabinets">Jewellery Cabinets</a></li>
+											<li><a href="search?query=coffee+tables">Coffee Tables</a></li>
+											<li><a href="search?query=shower+cabins">Shower Cabins</a></li>
 										</ul>
 									</li>
 									<li class="submenu">
 										<a type="button" class="show-submenu"><?php echo $categories[14]['categoryName']; ?></a>
 										<ul>
 											<h3><a href="category?id=14">All</a></h3>
-											<li><a href="search?query=Perfumes">Perfumes</a></li>
-											<li><a href="search?query=Music+Instruments">Music Instruments</a></li>
-											<li><a href="search?query=Art+Supplies">Art Supplies</a></li>
-											<li><a href="search?query=Camping+Kits">Camping Kits</a></li>
-											<li><a href="search?query=Car+Seat+Covers">Car Seat Covers</a></li>
-											<li><a href="search?query=Personal+Care">Personal Care</a></li>
-											<li><a href="search?query=Pet+Care">Pet Care</a></li>
+											<li><a href="search?query=perfumes">Perfumes</a></li>
+											<li><a href="search?query=music+instruments">Music Instruments</a></li>
+											<li><a href="search?query=art+supplies">Art Supplies</a></li>
+											<li><a href="search?query=camping+kits">Camping Kits</a></li>
+											<li><a href="search?query=car+seat+covers">Car Seat Covers</a></li>
+											<li><a href="search?query=personal+care">Personal Care</a></li>
+											<li><a href="search?query=pet+care">Pet Care</a></li>
 										</ul>
 									</li>
 								</ul>

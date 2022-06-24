@@ -19,7 +19,7 @@ include "functions/header.php";
 				<div class="box-contacts">
 					<i class="ti-support"></i>
 					<h2>Topshop Help Center</h2>
-					<a href="tel://+23058038524">+230 5803 8524</a> - <a href="mailto:abhijeet@null.net">abhijeet@null.net</a>
+					<a href="tel://+23058038524">+230 5803 8524</a> - <a href="mailto:abhjtweb@gmail.com">abhjtweb@gmail.com</a>
 					<small>Monday to Saturday, 08:00-18:00</small>
 				</div>
 			</div>
@@ -35,7 +35,7 @@ include "functions/header.php";
 				<div class="box-contacts">
 					<i class="ti-package"></i>
 					<h2>Topshop Order Queries</h2>
-					<a href="tel://+23058038524">+230 5803 8524</a> - <a href="mailto:abhtopshop@gmail.com">abhtopshop@gmail.com</a>
+					<a href="tel://+23058038524">+230 5803 8524</a> - <a href="mailto:abhjtweb@gmail.com">abhjtweb@gmail.com</a>
 					<small>Monday to Saturday, 08:00-18:00</small>
 				</div>
 			</div>

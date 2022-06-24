@@ -1,9 +1,9 @@
 <?php
+include "database.php";
 if (empty($_POST)) {
 	header("location:../error");
 	exit();
 }
-include "database.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require "../email/Exception.php";
@@ -17,6 +17,7 @@ if (empty($email)) {
 } else {
 	$hStyle = 'style="font-family: Arial, sans-serif; font-size: 21px; color: #000000;"';
 	$pStyle = 'style="font-family: Arial, sans-serif; font-size: 14px; color: #000000;"';
+	$aStyle = 'style="font-family: Arial, sans-serif; background-color: #004DDA; border: none; border-radius: 5px; color: #FFFFFF; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 15px; margin: 10px 0px; cursor: pointer;"';
 	try {
 		$mail = new PHPMailer();
 		$mail->isSMTP();
@@ -25,9 +26,9 @@ if (empty($email)) {
 		$mail->Port = 587;
 		$mail->SMTPSecure = "tls";
 		$mail->SMTPAuth = true;
-		$mail->Username = "abhtopshop@gmail.com";
-		$mail->Password = "********";
-		$mail->setFrom("abhtopshop@gmail.com", "Topshop");
+		$mail->Username = EMAIL_ADDRESS;
+		$mail->Password = EMAIL_PASSWORD;
+		$mail->setFrom(EMAIL_ADDRESS, "Topshop");
 		$mail->addAddress($email, $email);
 		$mail->SMTPOptions = [
 			"ssl" => [

@@ -1,10 +1,9 @@
 <?php
 ini_set('display_errors', 'off');
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "topshop";
-$connection = mysqli_connect($hostname, $username, $password, $database);
+include dirname(__DIR__)."/credentials.php";
+if (!(isset($connection))) {
+	$connection = mysqli_connect(DATABASE_HOSTNAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME);
+}
 if (!$connection) {
 	exit("Database connection error");
 }

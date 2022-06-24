@@ -103,7 +103,7 @@ include "functions/header.php";
 					</td>
 					<td>
 						<div class="numbers-row">
-							<input type="text" value="<?php echo $cartItems[$i]["quantity"]; ?>" id="quantity" class="quantity-stepper" name="quantity">
+							<input type="text" value="<?php echo $cartItems[$i]['quantity']; ?>" id="quantity" class="quantity-stepper" name="quantity">
 							<div class="inc button-inc">+</div>
 							<div class="dec button-inc">-</div>
 						</div>

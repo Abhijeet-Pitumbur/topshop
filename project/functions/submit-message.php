@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 'off');
+include "database.php";
 if (empty($_POST)) {
 	header("location:../error");
 	exit();
@@ -32,9 +32,9 @@ if (empty($name) || empty($email) || empty($message)) {
 		$mail->Port = 587;
 		$mail->SMTPSecure = "tls";
 		$mail->SMTPAuth = true;
-		$mail->Username = "abhtopshop@gmail.com";
-		$mail->Password = "********";
-		$mail->setFrom("abhtopshop@gmail.com", "Topshop");
+		$mail->Username = EMAIL_ADDRESS;
+		$mail->Password = EMAIL_PASSWORD;
+		$mail->setFrom(EMAIL_ADDRESS, "Topshop");
 		$mail->addAddress("pitumburabhijeet@gmail.com", "Abhijeet");
 		$mail->SMTPOptions = [
 			"ssl" => [
